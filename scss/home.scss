@@ -1,0 +1,228 @@
+$--ofsset: 0;
+$background-container: rgba(0, 0, 0, 0.267);
+
+$items: (
+  1: linear-gradient(45deg, #0ecffe 50%, #07a6f1),
+  2: linear-gradient(45deg, #18e198 50%, #0ec15d),
+  3: linear-gradient(45deg, #8a7cfb 50%, #633e9c),
+  4: linear-gradient(45deg, #fa7671 50%, #f81c4c),
+);
+
+$items-mobile: (
+  1: 70px,
+  2: 70px,
+  3: 70px,
+  4: 70px,
+);
+
+$items-desktop: (
+  1: 100px,
+  2: 100px,
+  3: 100px,
+  4: 100px,
+);
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.container-fluid {
+  display: grid;
+  grid-template-rows: 200px auto 100px auto;
+  align-items: center;
+  color: white;
+  height: 100vh;
+  background-image: url('../assets/img/HOME.JPG');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  .container {
+    &-title {
+      text-align: center;
+      grid-row: 1 / 2;
+      // background-color: $background-container;
+      width: 45%;
+      padding: 5px;
+      margin-left: 10px;
+      border: none;
+
+      & h1 {
+        font-size: 2em;
+        font-weight: 900;
+        text-shadow: 3px 3px 3px #2e2e2e;
+        color: #ffffff;
+        word-wrap: normal;
+      }
+    }
+
+    &-slogan {
+      grid-row: 2 / 3;
+      // border: 1px solid blue;
+      padding: 12px;
+
+      & h2 {
+        font-size: 2em;
+        line-height: 1.06;
+        letter-spacing: -0.02em;
+        color: #dfdfe2;
+      }
+
+      & .mask {
+        height: 70px;
+        // border: 1px solid green;
+        position: relative;
+        overflow: hidden;
+        margin-top: $--ofsset;
+
+        & span {
+          display: block;
+          box-sizing: border-box;
+          position: absolute;
+
+          background-size: 100% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-repeat: no-repeat;
+
+          @each $iter, $gradient in $items {
+            &:nth-child(#{$iter}) {
+              background-image: $gradient;
+            }
+          }
+
+          @each $iter, $top in $items-mobile {
+            &:nth-child(#{$iter}) {
+              top: $top;
+            }
+          }
+
+          &[data-up] {
+            transform: translateY(-200%);
+            transition: 0.5s transform ease-in-out;
+          }
+
+          &[data-show] {
+            transform: translateY(-100%);
+            transition: 0.5s transform ease-in-out;
+          }
+        }
+      }
+    }
+
+    &-linkeds {
+      grid-row: 3 / 4;
+      // border: 1px solid purple;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+
+      & .link {
+        text-align: center;
+        width: 40%;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 8px;
+        padding: 5px 8px;
+        font-weight: 500;
+        background: $background-container;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .link-effect {
+        line-height: 42px;
+        border: none;
+
+        &:hover {
+          background: transparent;
+          box-shadow: none;
+
+          &::after,
+          &::before {
+            width: 100%;
+            transition: 800ms ease all;
+          }
+        }
+
+        &::after,
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 2px;
+          width: 0;
+          background: #b8aeb1;
+          box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003,
+            4px 4px 5px 0px #0002;
+          transition: 400ms ease all;
+        }
+
+        &::after {
+          right: inherit;
+          top: inherit;
+          left: 0;
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container-fluid {
+    .container {
+      &-title {
+        width: 90%;
+        padding: 10px;
+        margin: 0 auto;
+        & h1 {
+          font-size: 3.2em;
+        }
+      }
+
+      &-slogan {
+        margin-left: 100px;
+
+        & h2 {
+          font-size: 3em;
+        }
+
+        & .mask {
+          height: 100px;
+          margin-top: 0px;
+
+          & span {
+            &[data-up] {
+              transform: translateY(-300%);
+              transition: 0.5s transform ease-in-out;
+            }
+
+            &[data-show] {
+              transform: translateY(-100%);
+              transition: 0.5s transform ease-in-out;
+            }
+
+            @each $iter, $top in $items-desktop {
+              &:nth-child(#{$iter}) {
+                top: $top;
+              }
+            }
+          }
+        }
+      }
+
+      &-linkeds {
+        & .link {
+          width: 20%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

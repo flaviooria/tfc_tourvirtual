@@ -1,0 +1,218 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.container-fluid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 200px auto 100px auto;
+  grid-template-rows: 200px auto 100px auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  height: 100vh;
+  background-image: url("../assets/img/HOME.JPG");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.container-fluid .container-title {
+  text-align: center;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  width: 45%;
+  padding: 5px;
+  margin-left: 10px;
+  border: none;
+}
+.container-fluid .container-title h1 {
+  font-size: 2em;
+  font-weight: 900;
+  text-shadow: 3px 3px 3px #2e2e2e;
+  color: #ffffff;
+  word-wrap: normal;
+}
+.container-fluid .container-slogan {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  padding: 12px;
+}
+.container-fluid .container-slogan h2 {
+  font-size: 2em;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #dfdfe2;
+}
+.container-fluid .container-slogan .mask {
+  height: 70px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+}
+.container-fluid .container-slogan .mask span {
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+}
+.container-fluid .container-slogan .mask span:nth-child(1) {
+  background-image: linear-gradient(45deg, #0ecffe 50%, #07a6f1);
+}
+.container-fluid .container-slogan .mask span:nth-child(2) {
+  background-image: linear-gradient(45deg, #18e198 50%, #0ec15d);
+}
+.container-fluid .container-slogan .mask span:nth-child(3) {
+  background-image: linear-gradient(45deg, #8a7cfb 50%, #633e9c);
+}
+.container-fluid .container-slogan .mask span:nth-child(4) {
+  background-image: linear-gradient(45deg, #fa7671 50%, #f81c4c);
+}
+.container-fluid .container-slogan .mask span:nth-child(1) {
+  top: 70px;
+}
+.container-fluid .container-slogan .mask span:nth-child(2) {
+  top: 70px;
+}
+.container-fluid .container-slogan .mask span:nth-child(3) {
+  top: 70px;
+}
+.container-fluid .container-slogan .mask span:nth-child(4) {
+  top: 70px;
+}
+.container-fluid .container-slogan .mask span[data-up] {
+  -webkit-transform: translateY(-200%);
+          transform: translateY(-200%);
+  -webkit-transition: 0.5s -webkit-transform ease-in-out;
+  transition: 0.5s -webkit-transform ease-in-out;
+  transition: 0.5s transform ease-in-out;
+  transition: 0.5s transform ease-in-out, 0.5s -webkit-transform ease-in-out;
+}
+.container-fluid .container-slogan .mask span[data-show] {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.5s -webkit-transform ease-in-out;
+  transition: 0.5s -webkit-transform ease-in-out;
+  transition: 0.5s transform ease-in-out;
+  transition: 0.5s transform ease-in-out, 0.5s -webkit-transform ease-in-out;
+}
+.container-fluid .container-linkeds {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.container-fluid .container-linkeds .link {
+  text-align: center;
+  width: 40%;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.267);
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.container-fluid .container-linkeds .link-effect {
+  line-height: 42px;
+  border: none;
+}
+.container-fluid .container-linkeds .link-effect:hover {
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.container-fluid .container-linkeds .link-effect:hover::after, .container-fluid .container-linkeds .link-effect:hover::before {
+  width: 100%;
+  -webkit-transition: 800ms ease all;
+  transition: 800ms ease all;
+}
+.container-fluid .container-linkeds .link-effect::after, .container-fluid .container-linkeds .link-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #b8aeb1;
+  -webkit-box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003, 4px 4px 5px 0px #0002;
+          box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003, 4px 4px 5px 0px #0002;
+  -webkit-transition: 400ms ease all;
+  transition: 400ms ease all;
+}
+.container-fluid .container-linkeds .link-effect::after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .container-fluid .container-title {
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+  }
+  .container-fluid .container-title h1 {
+    font-size: 3.2em;
+  }
+  .container-fluid .container-slogan {
+    margin-left: 100px;
+  }
+  .container-fluid .container-slogan h2 {
+    font-size: 3em;
+  }
+  .container-fluid .container-slogan .mask {
+    height: 100px;
+    margin-top: 0px;
+  }
+  .container-fluid .container-slogan .mask span[data-up] {
+    -webkit-transform: translateY(-300%);
+            transform: translateY(-300%);
+    -webkit-transition: 0.5s -webkit-transform ease-in-out;
+    transition: 0.5s -webkit-transform ease-in-out;
+    transition: 0.5s transform ease-in-out;
+    transition: 0.5s transform ease-in-out, 0.5s -webkit-transform ease-in-out;
+  }
+  .container-fluid .container-slogan .mask span[data-show] {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    -webkit-transition: 0.5s -webkit-transform ease-in-out;
+    transition: 0.5s -webkit-transform ease-in-out;
+    transition: 0.5s transform ease-in-out;
+    transition: 0.5s transform ease-in-out, 0.5s -webkit-transform ease-in-out;
+  }
+  .container-fluid .container-slogan .mask span:nth-child(1) {
+    top: 100px;
+  }
+  .container-fluid .container-slogan .mask span:nth-child(2) {
+    top: 100px;
+  }
+  .container-fluid .container-slogan .mask span:nth-child(3) {
+    top: 100px;
+  }
+  .container-fluid .container-slogan .mask span:nth-child(4) {
+    top: 100px;
+  }
+  .container-fluid .container-linkeds .link {
+    width: 20%;
+    text-align: center;
+  }
+}
