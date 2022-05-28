@@ -16,25 +16,26 @@
 'use strict';
 
 (function () {
-  var Marzipano = window.Marzipano;
-  var bowser = window.bowser;
-  var screenfull = window.screenfull;
-  var data = window.APP_DATA;
-
-  console.log(data);
+  const Marzipano = window.Marzipano;
+  const bowser = window.bowser;
+  const screenfull = window.screenfull;
+  const data = window.APP_DATA;
 
   // Grab elements from DOM.
-  var panoElement = document.querySelector('#pano');
-  var sceneNameElement = document.querySelector('#titleBar .sceneName');
-  var sceneListElement = document.querySelector('#sceneList');
-  var sceneElements = document.querySelectorAll('#sceneList .scene');
-  var sceneListToggleElement = document.querySelector('#sceneListToggle');
-  var autorotateToggleElement = document.querySelector('#autorotateToggle');
-  var fullscreenToggleElement = document.querySelector('#fullscreenToggle');
+  const panoElement = document.querySelector('#pano');
+  const sceneNameElement = document.querySelector('#titleBar .sceneName');
+  const sceneListElement = document.querySelector('#sceneList');
+  const sceneElements = document.querySelectorAll('#sceneList .scene');
+  const sceneListToggleElement = document.querySelector('#sceneListToggle');
+  const autorotateToggleElement = document.querySelector('#autorotateToggle');
+  const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
+
+  // Array of scenes history
+  let scenesHistory = [];
 
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
-    var setMode = function () {
+    let setMode = function () {
       if (mql.matches) {
         document.body.classList.remove('desktop');
         document.body.classList.add('mobile');
@@ -43,7 +44,7 @@
         document.body.classList.add('desktop');
       }
     };
-    var mql = matchMedia('(max-width: 500px), (max-height: 500px)');
+    let mql = matchMedia('(max-width: 500px), (max-height: 500px)');
     setMode();
     mql.addListener(setMode);
   } else {
@@ -63,37 +64,38 @@
   }
 
   // Viewer options.
-  var viewerOpts = {
+  const viewerOpts = {
     controls: {
       mouseViewMode: data.settings.mouseViewMode,
     },
   };
 
   // Initialize viewer.
-  var viewer = new Marzipano.Viewer(panoElement, viewerOpts);
+  const viewer = new Marzipano.Viewer(panoElement, viewerOpts);
 
+  // Load Scene List
   loadSceneList();
 
   // Create scenes.
-  var scenes = data.scenes.map(function (data) {
-    var urlPrefix = 'assets/tiles';
-    var source = Marzipano.ImageUrlSource.fromString(
+  const scenes = data.scenes.map(function (data) {
+    let urlPrefix = 'assets/tiles';
+    let source = Marzipano.ImageUrlSource.fromString(
       urlPrefix + '/' + data.id + '/{z}/{f}/{y}/{x}.jpg',
       { cubeMapPreviewUrl: urlPrefix + '/' + data.id + '/preview.jpg' }
     );
-    var geometry = new Marzipano.CubeGeometry(data.levels);
+    let geometry = new Marzipano.CubeGeometry(data.levels);
 
-    var limiter = Marzipano.RectilinearView.limit.traditional(
+    let limiter = Marzipano.RectilinearView.limit.traditional(
       data.faceSize,
       (100 * Math.PI) / 180,
       (120 * Math.PI) / 180
     );
-    var view = new Marzipano.RectilinearView(
+    let view = new Marzipano.RectilinearView(
       data.initialViewParameters,
       limiter
     );
 
-    var scene = viewer.createScene({
+    let scene = viewer.createScene({
       source: source,
       geometry: geometry,
       view: view,
@@ -102,7 +104,7 @@
 
     // Create link hotspots.
     data.linkHotspots.forEach(function (hotspot) {
-      var element = createLinkHotspotElement(hotspot);
+      const element = createLinkHotspotElement(hotspot);
       scene
         .hotspotContainer()
         .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
@@ -110,7 +112,7 @@
 
     // Create info hotspots.
     data.infoHotspots.forEach(function (hotspot) {
-      var element = createInfoHotspotElement(hotspot);
+      const element = createInfoHotspotElement(hotspot);
       scene
         .hotspotContainer()
         .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
@@ -124,7 +126,7 @@
   });
 
   // Set up autorotate, if enabled.
-  var autorotate = Marzipano.autorotate({
+  const autorotate = Marzipano.autorotate({
     yawSpeed: 0.03,
     targetPitch: 0,
     targetFov: Math.PI / 2,
@@ -163,7 +165,7 @@
 
   // Set handler for scene switch.
   scenes.forEach(function (scene) {
-    var el = document.querySelector(
+    const el = document.querySelector(
       '#sceneList .scene[data-id="' + scene.data.id + '"]'
     );
     el.addEventListener('click', function () {
@@ -174,81 +176,6 @@
       }
     });
   });
-
-  // DOM elements for view controls.
-  var viewUpElement = document.querySelector('#viewUp');
-  var viewDownElement = document.querySelector('#viewDown');
-  var viewLeftElement = document.querySelector('#viewLeft');
-  var viewRightElement = document.querySelector('#viewRight');
-  var viewInElement = document.querySelector('#viewIn');
-  var viewOutElement = document.querySelector('#viewOut');
-
-  // Dynamic parameters for controls.
-  var velocity = 0.7;
-  var friction = 3;
-
-  // Associate view controls with elements.
-  var controls = viewer.controls();
-  controls.registerMethod(
-    'upElement',
-    new Marzipano.ElementPressControlMethod(
-      viewUpElement,
-      'y',
-      -velocity,
-      friction
-    ),
-    true
-  );
-  controls.registerMethod(
-    'downElement',
-    new Marzipano.ElementPressControlMethod(
-      viewDownElement,
-      'y',
-      velocity,
-      friction
-    ),
-    true
-  );
-  controls.registerMethod(
-    'leftElement',
-    new Marzipano.ElementPressControlMethod(
-      viewLeftElement,
-      'x',
-      -velocity,
-      friction
-    ),
-    true
-  );
-  controls.registerMethod(
-    'rightElement',
-    new Marzipano.ElementPressControlMethod(
-      viewRightElement,
-      'x',
-      velocity,
-      friction
-    ),
-    true
-  );
-  controls.registerMethod(
-    'inElement',
-    new Marzipano.ElementPressControlMethod(
-      viewInElement,
-      'zoom',
-      -velocity,
-      friction
-    ),
-    true
-  );
-  controls.registerMethod(
-    'outElement',
-    new Marzipano.ElementPressControlMethod(
-      viewOutElement,
-      'zoom',
-      velocity,
-      friction
-    ),
-    true
-  );
 
   function sanitize(s) {
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
@@ -282,8 +209,8 @@
   }
 
   function updateSceneList(scene) {
-    for (var i = 0; i < sceneElements.length; i++) {
-      var el = sceneElements[i];
+    for (let i = 0; i < sceneElements.length; i++) {
+      const el = sceneElements[i];
       if (el.getAttribute('data-id') === scene.data.id) {
         el.classList.add('current');
       } else {
@@ -352,28 +279,31 @@
 
   function createLinkHotspotElement(hotspot) {
     // Create wrapper element to hold icon and tooltip.
-    var wrapper = document.createElement('div');
+    let wrapper = document.createElement('div');
     wrapper.classList.add('hotspot');
     wrapper.classList.add('link-hotspot');
 
     // Create image element.
-    var icon = document.createElement('img');
+    let icon = document.createElement('img');
     icon.src = 'assets/img/link.png';
     icon.classList.add('link-hotspot-icon');
 
     // Set rotation transform.
-    var transformProperties = [
+    let transformProperties = [
       '-ms-transform',
       '-webkit-transform',
       'transform',
     ];
-    for (var i = 0; i < transformProperties.length; i++) {
-      var property = transformProperties[i];
+    for (let i = 0; i < transformProperties.length; i++) {
+      const property = transformProperties[i];
       icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
     }
 
     // Add click event handler.
     wrapper.addEventListener('click', function () {
+      const scene = findSceneById(hotspot.target);
+      addSceneToHistoryIfNotExist(scene);
+      console.log(scenesHistory);
       switchScene(findSceneById(hotspot.target));
     });
 
@@ -382,10 +312,10 @@
     stopTouchAndScrollEventPropagation(wrapper);
 
     // Create tooltip element.
-    var tooltip = document.createElement('div');
+    let tooltip = document.createElement('div');
     tooltip.classList.add('hotspot-tooltip');
     tooltip.classList.add('link-hotspot-tooltip');
-    const name = findSceneDataById(hotspot.target).name;
+    let name = findSceneDataById(hotspot.target).name;
     tooltip.innerHTML = convertStringToSentence(name);
 
     wrapper.appendChild(icon);
@@ -470,9 +400,15 @@
     return wrapper;
   }
 
+  function addSceneToHistoryIfNotExist(scene) {
+    if (!scenesHistory.find((element) => element.data.id === scene.data.id)) {
+      scenesHistory.push(scene);
+    }
+  }
+
   // Prevent touch and scroll events from reaching the parent element.
   function stopTouchAndScrollEventPropagation(element, eventList) {
-    var eventList = [
+    eventList = [
       'touchstart',
       'touchmove',
       'touchend',
@@ -480,7 +416,7 @@
       'wheel',
       'mousewheel',
     ];
-    for (var i = 0; i < eventList.length; i++) {
+    for (let i = 0; i < eventList.length; i++) {
       element.addEventListener(eventList[i], function (event) {
         event.stopPropagation();
       });
@@ -488,7 +424,7 @@
   }
 
   function findSceneById(id) {
-    for (var i = 0; i < scenes.length; i++) {
+    for (let i = 0; i < scenes.length; i++) {
       if (scenes[i].data.id === id) {
         return scenes[i];
       }
@@ -497,7 +433,7 @@
   }
 
   function findSceneDataById(id) {
-    for (var i = 0; i < data.scenes.length; i++) {
+    for (let i = 0; i < data.scenes.length; i++) {
       if (data.scenes[i].id === id) {
         return data.scenes[i];
       }

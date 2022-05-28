@@ -67,11 +67,13 @@ body.fullscreen-enabled.mobile #titleBar {
 
 /* If there are multiple scenes the title bar must make space for the scene list toggle */
 body.multiple-scenes #titleBar {
-  left: 40px;
+  left: 5px;
+  top: 10px;
 }
 
 body.multiple-scenes.mobile #titleBar {
-  left: 50px;
+  left: 5px;
+  top: 10px;
 }
 
 #titleBar .sceneName {
@@ -101,15 +103,14 @@ body.multiple-scenes.mobile #titleBar {
 }
 
 #fullscreenToggle {
-  display: none;
   position: absolute;
   top: 0;
   right: 0;
   width: 40px;
   height: 40px;
   padding: 5px;
-  background-color: rgb(103,115,131);
-  background-color: rgba(103,115,131,0.8);
+  /* background-color: rgb(103,115,131);
+  background-color: rgba(103,115,131,0.8); */
 }
 
 .mobile #fullscreenToggle {
@@ -125,8 +126,8 @@ body.fullscreen-enabled #fullscreenToggle {
   position: absolute;
   top: 5px;
   right: 5px;
-  width: 30px;
-  height: 30px;
+  /* width: 30px;
+  height: 30px; */
 }
 
 .mobile #fullscreenToggle .icon {
@@ -158,8 +159,8 @@ body.fullscreen-enabled #fullscreenToggle {
   width: 40px;
   height: 40px;
   padding: 5px;
-  background-color: rgb(103,115,131);
-  background-color: rgba(103,115,131,0.8);
+  /* background-color: rgb(103,115,131);
+  background-color: rgba(103,115,131,0.8); */
 }
 
 .mobile #autorotateToggle {
@@ -179,9 +180,9 @@ body.fullscreen-enabled.mobile #autorotateToggle {
 #autorotateToggle .icon {
   position: absolute;
   top: 5px;
-  right: 5px;
-  width: 30px;
-  height: 30px;
+  right: 20px;
+  /* width: 30px;
+  height: 30px; */
 }
 
 .mobile #autorotateToggle .icon {
@@ -203,6 +204,58 @@ body.fullscreen-enabled.mobile #autorotateToggle {
 
 #autorotateToggle.enabled .icon.off {
   display: none;
+}
+
+/* Hide controls when width is too small */
+@media (max-width: 600px) {
+  #autorotateToggle {
+    display: none !important;
+  }
+
+  #fullscreenToggle {
+    display: none !important;
+  }
+}
+
+/* Icon Home */
+#homeToggle {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+}
+
+#homeToggle .icon {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  /* width: 30px;
+  height: 30px; */
+  cursor: pointer;
+}
+
+/* Icon History */
+
+#historyToggle {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+}
+
+#historyToggle .icon {
+  position: absolute;
+  bottom: 80px;
+  left: 20px;
+  /* width: 30px;
+  height: 30px; */
+  cursor: pointer;
 }
 
 #sceneListToggle {
