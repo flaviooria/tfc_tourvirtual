@@ -14,45 +14,43 @@
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,400&family=Nunito:wght@300;400&family=Raleway:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body class="multiple-scenes ">
-
+  
+<!-- Render section of 360º images -->
 <div id="pano"></div>
-
-<div id="sceneList" style="display: none;">
-  <ul class="scenes"></ul>
-</div>
-
+<!-- Title of image -->
 <div id="titleBar">
   <h1 class="sceneName"></h1>
 </div>
-
-<a href="javascript:void(0)" title="Auto rotación" id="autorotateToggle">
+<!-- Icon play / pause toogle for autorotation image. -->
+<a href="#" title="Auto rotación" id="autorotateToggle">
   <img class="icon off" src="assets/img/play.svg">
   <img class="icon on" src="assets/img/pause.svg">
 </a>
 
-<a href="javascript:void(0)" title="Pantalla completa" id="fullscreenToggle">
+<!-- Icon toogle for fullscreen. -->
+<a href="#" title="Pantalla completa" id="fullscreenToggle">
   <img class="icon off" src="assets/img/fullscreen.svg">
   <img class="icon on" src="assets/img/fullscreen_exit.svg">
 </a>
 
+<!-- Icon toogle for redirect to home. -->
 <a href="index.html" title="Página principal" id="homeToggle">
   <img src="assets/img/home.svg" class="icon">
 </a>
-
-<a href="javascript:void(0)" title="Historial" id="historyToggle">
+<!-- Icon history toogle. -->
+<a href="#" title="Historial" id="historyToggle">
   <img src="assets/img/history.svg" class="icon">
 </a>
 
-<a href="javascript:void(0)" id="sceneListToggle" style="display: none;">
-  <img class="icon off" src="assets/img/expand.png">
-  <img class="icon on" src="assets/img/collapse.png">
-</a>
+<!-- History of visited scenes. -->
+<div class="enabled" id="history">
+</div>
 
-
+<!-- Scripts Libraries -->
 <script src="vendor/screenfull.min.js" ></script>
 <script src="vendor/bowser.min.js" ></script>
 <script src="vendor/marzipano.js" ></script>
-
+<!-- Scripts File -->
 <script src="js/data.js"></script>
 <script src="js/index.js"></script>
 

@@ -24,11 +24,10 @@
   // Grab elements from DOM.
   const panoElement = document.querySelector('#pano');
   const sceneNameElement = document.querySelector('#titleBar .sceneName');
-  const sceneListElement = document.querySelector('#sceneList');
-  const sceneElements = document.querySelectorAll('#sceneList .scene');
-  const sceneListToggleElement = document.querySelector('#sceneListToggle');
   const autorotateToggleElement = document.querySelector('#autorotateToggle');
   const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
+  const historyToggleElement = document.querySelector('#historyToggle');
+  const historyElement = document.querySelector('#history');
 
   // Array of scenes history
   let scenesHistory = [];
@@ -72,9 +71,6 @@
 
   // Initialize viewer.
   const viewer = new Marzipano.Viewer(panoElement, viewerOpts);
-
-  // Load Scene List
-  loadSceneList();
 
   // Create scenes.
   const scenes = data.scenes.map(function (data) {
@@ -125,6 +121,67 @@
     };
   });
 
+  // Create a card element by history of visited scenes.
+  function createCardSceneElement(scene) {
+    const { id, name } = scene.data;
+
+    let a = document.createElement('a');
+    a.classList.add('card');
+    a.setAttribute('data-id', id);
+
+    let img = document.createElement('img');
+    img.src = './assets/tiles/' + id + '/preview.jpg';
+    img.classList.add('image');
+    img.setAttribute('loading', 'lazy');
+
+    let p = document.createElement('p');
+    p.classList.add('text');
+    p.textContent = convertStringToSentence(name);
+
+    a.appendChild(img);
+    a.appendChild(p);
+
+    historyElement.classList.add('historyList');
+    historyElement.appendChild(a);
+  }
+
+  // Create a scene of history. 
+  function createSceneHistory() {
+    if (scenesHistory.length == 1) {
+      const scene = scenesHistory[0];
+      createCardSceneElement(scene);
+    } else {
+      const scene = scenesHistory[scenesHistory.length - 1];
+      createCardSceneElement(scene);
+    }
+
+    // We add your event to each link so that you can make the scene change.
+    scenes.forEach(function (scene) {
+      const anchor = document.querySelector(
+        `.historyList .card[data-id='${scene.data.id}']`
+      );
+
+      if (anchor != null) {
+        anchor.addEventListener('click', () => {
+          switchScene(scene);
+        });
+      }
+    });
+  }
+
+  //Set show and hide history scenes
+  historyToggleElement.addEventListener('click', () => {
+    if (historyElement.classList.contains('historyList')) {
+      if (historyElement.classList.contains('enabled')) {
+        historyElement.classList.remove('enabled');
+        historyElement.classList.add('disabled');
+      } else {
+        historyElement.classList.remove('disabled');
+        historyElement.classList.add('enabled');
+      }
+    }
+  });
+
   // Set up autorotate, if enabled.
   const autorotate = Marzipano.autorotate({
     yawSpeed: 0.03,
@@ -155,27 +212,10 @@
     document.body.classList.add('fullscreen-disabled');
   }
 
-  // Set handler for scene list toggle.
-  sceneListToggleElement.addEventListener('click', toggleSceneList);
-
   // Start with the scene list open on desktop.
   if (!document.body.classList.contains('mobile')) {
     showSceneList();
   }
-
-  // Set handler for scene switch.
-  scenes.forEach(function (scene) {
-    const el = document.querySelector(
-      '#sceneList .scene[data-id="' + scene.data.id + '"]'
-    );
-    el.addEventListener('click', function () {
-      switchScene(scene);
-      // On mobile, hide scene list after selecting a scene.
-      if (document.body.classList.contains('mobile')) {
-        hideSceneList();
-      }
-    });
-  });
 
   function sanitize(s) {
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
@@ -187,7 +227,6 @@
     scene.scene.switchTo();
     startAutorotate();
     updateSceneName(scene);
-    updateSceneList(scene);
   }
 
   function updateSceneName(scene) {
@@ -208,51 +247,6 @@
     return stringAux;
   }
 
-  function updateSceneList(scene) {
-    for (let i = 0; i < sceneElements.length; i++) {
-      const el = sceneElements[i];
-      if (el.getAttribute('data-id') === scene.data.id) {
-        el.classList.add('current');
-      } else {
-        el.classList.remove('current');
-      }
-    }
-  }
-
-  function loadSceneList() {
-    let sceneList = document.querySelector('#sceneList .scenes');
-
-    for (let index = 0; index < data.scenes.length; index++) {
-      const element = data.scenes[index];
-      const { id, name } = element;
-
-      let a = document.createElement('a');
-      a.classList.add('scene');
-      a.setAttribute('data-id', id);
-
-      let li = document.createElement('li');
-      li.classList.add('text');
-      li.innerText = convertStringToSentence(name);
-
-      a.append(li);
-      sceneList.append(a);
-    }
-  }
-
-  function showSceneList() {
-    sceneListElement.classList.add('enabled');
-    sceneListToggleElement.classList.add('enabled');
-  }
-
-  function hideSceneList() {
-    sceneListElement.classList.remove('enabled');
-    sceneListToggleElement.classList.remove('enabled');
-  }
-
-  function toggleSceneList() {
-    sceneListElement.classList.toggle('enabled');
-    sceneListToggleElement.classList.toggle('enabled');
-  }
 
   function startAutorotate() {
     if (!autorotateToggleElement.classList.contains('enabled')) {
@@ -303,7 +297,6 @@
     wrapper.addEventListener('click', function () {
       const scene = findSceneById(hotspot.target);
       addSceneToHistoryIfNotExist(scene);
-      console.log(scenesHistory);
       switchScene(findSceneById(hotspot.target));
     });
 
@@ -403,6 +396,7 @@
   function addSceneToHistoryIfNotExist(scene) {
     if (!scenesHistory.find((element) => element.data.id === scene.data.id)) {
       scenesHistory.push(scene);
+      createSceneHistory();
     }
   }
 
