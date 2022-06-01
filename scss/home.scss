@@ -137,6 +137,9 @@ body {
       .link-effect {
         line-height: 42px;
         border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover {
           background: transparent;

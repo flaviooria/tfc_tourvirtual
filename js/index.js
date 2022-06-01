@@ -141,11 +141,10 @@
     a.appendChild(img);
     a.appendChild(p);
 
-    historyElement.classList.add('historyList');
     historyElement.appendChild(a);
   }
 
-  // Create a scene of history. 
+  // Create a scene of history.
   function createSceneHistory() {
     if (scenesHistory.length == 1) {
       const scene = scenesHistory[0];
@@ -173,6 +172,10 @@
 
   //Set show and hide history scenes
   historyToggleElement.addEventListener('click', () => {
+    if (!historyElement.classList.contains('historyList')) {
+      historyElement.classList.add('historyList');
+    }
+
     if (historyElement.classList.contains('historyList')) {
       if (historyElement.classList.contains('enabled')) {
         historyElement.classList.remove('enabled');
@@ -182,7 +185,7 @@
         historyElement.classList.add('enabled');
       }
     }
-  }); 
+  });
 
   // Set up autorotate, if enabled.
   const autorotate = Marzipano.autorotate({
@@ -214,7 +217,6 @@
     document.body.classList.add('fullscreen-disabled');
   }
 
-
   function sanitize(s) {
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
   }
@@ -244,7 +246,6 @@
     }
     return stringAux;
   }
-
 
   function startAutorotate() {
     if (!autorotateToggleElement.classList.contains('enabled')) {

@@ -245,19 +245,17 @@ body.fullscreen-enabled.mobile #autorotateToggle {
 #historyToggle {
   display: block;
   position: absolute;
-  bottom: 80px;
-  left: 20px;
+  bottom: 0;
+  right: 0;
   width: 40px;
   height: 40px;
   padding: 5px;
 }
 
 #historyToggle .icon {
+  bottom: 20px;
+  right: 20px;
   position: absolute;
-  bottom: 80px;
-  left: 20px;
-  bottom: 0;
-  left: 0;
   cursor: pointer;
 }
 
@@ -392,14 +390,14 @@ body.fullscreen-enabled.mobile #autorotateToggle {
 
 /* History List*/
 .historyList {
-  display: grid;
+  /* display: grid; */
   grid-template-rows: auto;
   place-items: center;
   gap: 10px;
   height: auto;
   max-height: 60%;
   position: absolute;
-  left: 30px;
+  right: 30px;
   top: 80px;
   padding: 12px;
   overflow: hidden;
