@@ -164,6 +164,8 @@
       if (anchor != null) {
         anchor.addEventListener('click', () => {
           switchScene(scene);
+          historyElement.classList.remove('enabled');
+          historyElement.classList.add('disabled');
         });
       }
     });
@@ -180,7 +182,7 @@
         historyElement.classList.add('enabled');
       }
     }
-  });
+  }); 
 
   // Set up autorotate, if enabled.
   const autorotate = Marzipano.autorotate({
@@ -212,10 +214,6 @@
     document.body.classList.add('fullscreen-disabled');
   }
 
-  // Start with the scene list open on desktop.
-  if (!document.body.classList.contains('mobile')) {
-    showSceneList();
-  }
 
   function sanitize(s) {
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
