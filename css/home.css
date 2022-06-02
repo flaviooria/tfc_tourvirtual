@@ -172,7 +172,54 @@ body {
   left: 0;
   bottom: 0;
 }
+.container-fluid .container-footer {
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4/5;
+  padding: 0 10px;
+}
+.container-fluid .container-footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0;
+}
+.container-fluid .container-footer ul li {
+  font-size: 1em;
+  line-height: 1.5em;
+  font-weight: 300;
+  list-style: none;
+}
+.container-fluid .container-footer ul li a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 500;
+  cursor: pointer;
+}
 
+@media screen and (max-width: 768px) {
+  .container-fluid .container-footer ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .container-fluid .container-footer ul li {
+    font-size: 1.2em;
+  }
+}
 @media screen and (min-width: 768px) {
   .container-fluid .container-title {
     width: 90%;
