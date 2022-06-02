@@ -172,20 +172,23 @@
 
   //Set show and hide history scenes
   historyToggleElement.addEventListener('click', () => {
-    if (!historyElement.classList.contains('historyList')) {
-      historyElement.removeAttribute('style');
-      historyElement.classList.add('historyList');
-    }
-
-    if (historyElement.classList.contains('historyList')) {
-      if (historyElement.classList.contains('enabled')) {
-        historyElement.classList.remove('enabled');
-        historyElement.classList.add('disabled');
-      } else {
-        historyElement.classList.remove('disabled');
-        historyElement.classList.add('enabled');
+    if (scenesHistory.length != 0) {
+      if (!historyElement.classList.contains('historyList')) {
+        historyElement.removeAttribute('style');
+        historyElement.classList.add('historyList');
+      }
+  
+      if (historyElement.classList.contains('historyList')) {
+        if (historyElement.classList.contains('enabled')) {
+          historyElement.classList.remove('enabled');
+          historyElement.classList.add('disabled');
+        } else {
+          historyElement.classList.remove('disabled');
+          historyElement.classList.add('enabled');
+        }
       }
     }
+    
   });
 
   // Set up autorotate, if enabled.

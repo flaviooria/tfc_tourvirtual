@@ -1888,7 +1888,7 @@ var APP_DATA = {
           "target": "40-pasillo_12-eso"
         },
         {
-          "yaw": -3.0864964678287876,
+          "yaw": 0.0864964678287876,
           "pitch": 0.1619555961912198,
           "rotation": 1.5707963267948966,
           "target": "42-escalera-3eso-biblioteca"
