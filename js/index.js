@@ -173,6 +173,7 @@
   //Set show and hide history scenes
   historyToggleElement.addEventListener('click', () => {
     if (!historyElement.classList.contains('historyList')) {
+      historyElement.removeAttribute('style');
       historyElement.classList.add('historyList');
     }
 
