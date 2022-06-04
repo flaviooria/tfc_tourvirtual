@@ -20,6 +20,8 @@
   const bowser = window.bowser;
   const screenfull = window.screenfull;
   const data = window.APP_DATA;
+  const floorDown = window.FLOOR_DOWN;
+  const floorUp = window.FLOOR_UP;
 
   // Grab elements from DOM.
   const panoElement = document.querySelector('#pano');
@@ -28,9 +30,13 @@
   const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
   const historyToggleElement = document.querySelector('#historyToggle');
   const historyElement = document.querySelector('#history');
+  const mapToggleElement = document.querySelector('#mapToggle');
+  // const mapElement = document.querySelector('');
 
   // Array of scenes history
   let scenesHistory = [];
+  // Array of map names scenes of floor down
+  let mapNameScenes = [];
 
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
@@ -157,12 +163,13 @@
     // We add your event to each link so that you can make the scene change.
     scenes.forEach(function (scene) {
       const anchor = document.querySelector(
-        `.historyList .card[data-id='${scene.data.id}']`
+        `#history .card[data-id='${scene.data.id}']`
       );
 
       if (anchor != null) {
         anchor.addEventListener('click', () => {
           switchScene(scene);
+          // Hide history scenes
           historyElement.classList.remove('enabled');
           historyElement.classList.add('disabled');
         });
@@ -177,7 +184,7 @@
         historyElement.removeAttribute('style');
         historyElement.classList.add('historyList');
       }
-  
+
       if (historyElement.classList.contains('historyList')) {
         if (historyElement.classList.contains('enabled')) {
           historyElement.classList.remove('enabled');
@@ -188,7 +195,6 @@
         }
       }
     }
-    
   });
 
   // Set up autorotate, if enabled.
@@ -282,7 +288,7 @@
 
     // Create image element.
     let icon = document.createElement('img');
-    icon.src = 'assets/img/link.png';
+    icon.src = 'assets/icons/link.png';
     icon.classList.add('link-hotspot-icon');
 
     // Set rotation transform.
@@ -300,7 +306,7 @@
     wrapper.addEventListener('click', function () {
       const scene = findSceneById(hotspot.target);
       addSceneToHistoryIfNotExist(scene);
-      switchScene(findSceneById(hotspot.target));
+      switchScene(scene);
     });
 
     // Prevent touch and scroll events from reaching the parent element.

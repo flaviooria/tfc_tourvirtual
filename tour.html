@@ -1,59 +1,99 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>IES FERNANDO III - TOUR VIRTUAL</title>
-<link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
-<meta charset="utf-8">
-<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
-<style> @-ms-viewport { width: device-width; } </style>
-<!-- Styles  -->
-<link rel="stylesheet" href="vendor/reset.min.css">
-<link rel="stylesheet" href="css/style.css">
-<!-- Font Google -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,400&family=Nunito:wght@300;400&family=Raleway:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
-</head>
-<body class="multiple-scenes ">
-  
-<!-- Render section of 360º images -->
-<div id="pano"></div>
-<!-- Title of image -->
-<div id="titleBar">
-  <h1 class="sceneName"></h1>
-</div>
-<!-- Icon play / pause toogle for autorotation image. -->
-<a href="#" title="Auto rotación" id="autorotateToggle">
-  <img class="icon off" src="assets/img/play.svg">
-  <img class="icon on" src="assets/img/pause.svg">
-</a>
+  <head>
+    <title>IES FERNANDO III - TOUR VIRTUAL</title>
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.jpg" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui"
+    />
+    <style>
+      @-ms-viewport {
+        width: device-width;
+      }
+    </style>
+    <!-- Styles  -->
+    <link rel="stylesheet" href="vendor/reset.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,400&family=Nunito:wght@300;400&family=Raleway:ital,wght@0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="multiple-scenes">
+    <!-- Render section of 360º images -->
+    <div id="pano"></div>
 
-<!-- Icon toogle for fullscreen. -->
-<a href="#" title="Pantalla completa" id="fullscreenToggle">
-  <img class="icon off" src="assets/img/fullscreen.svg">
-  <img class="icon on" src="assets/img/fullscreen_exit.svg">
-</a>
+    <!-- Title of image -->
+    <div id="titleBar">
+      <h1 class="sceneName"></h1>
+    </div>
 
-<!-- Icon toogle for redirect to home. -->
-<a href="index.html" title="Página principal" id="homeToggle">
-  <img src="assets/img/home.svg" class="icon">
-</a>
-<!-- Icon history toogle. -->
-<a href="#" title="Historial" id="historyToggle">
-  <img src="assets/img/history.svg" class="icon">
-</a>
+    <!-- Icon play / pause toogle for autorotation image. -->
+    <a href="#" title="Auto rotación" id="autorotateToggle">
+      <img class="icon off" src="assets/icons/play.svg" />
+      <img class="icon on" src="assets/icons/pause.svg" />
+    </a>
 
-<!-- History of visited scenes. -->
-<div style="display: none;" id="history">
-</div>
+    <!-- Icon toogle for fullscreen. -->
+    <a href="#" title="Pantalla completa" id="fullscreenToggle">
+      <img class="icon off" src="assets/icons/fullscreen.svg" />
+      <img class="icon on" src="assets/icons/fullscreen_exit.svg" />
+    </a>
 
-<!-- Scripts Libraries -->
-<script src="vendor/screenfull.min.js" ></script>
-<script src="vendor/bowser.min.js" ></script>
-<script src="vendor/marzipano.js" ></script>
-<!-- Scripts File -->
-<script src="js/data.js"></script>
-<script src="js/index.js"></script>
+    <!-- Icon toogle for redirect to home. -->
+    <a href="index.html" title="Página principal" id="homeToggle">
+      <img src="assets/icons/home.svg" class="icon" />
+      <h3 class="icon-title">Inicio</h3>
+    </a>
 
-</body>
+    <!-- Icon history toogle. -->
+    <a href="#" title="Historial" id="historyToggle">
+      <img src="assets/icons/history.svg" class="icon" />
+      <h3 class="icon-title">Historial</h3>
+    </a>
+
+    <!-- Icon Scenes Map -->
+    <a href="#" title="Ver Mapa" id="mapToggle">
+      <img src="assets/icons/map_white.svg" alt="" class="icon" />
+      <h3 class="icon-title">Mapa</h3>
+    </a>
+
+    <!-- Maps of College  -->
+    <div id="contentMap">
+      <a href="#" class="arrow_up" title="Plano arriba">
+        <img src="assets/icons/arrow_up.svg" alt="" class="icon" />
+      </a>
+      <a href="#" class="arrow_down" title="Plano abajo">
+        <img src="assets/icons/arrow_down.svg" alt="" class="icon" />
+      </a>
+      <a href="#" class="close" title="Cerrar">
+        <img src="assets/icons/close.svg" alt="" class="icon" />
+      </a>
+      <div class="mapDown">
+        <img src="assets/planos/planta_baja.jpg" alt="" />
+      </div>
+      <!-- <div class="mapUp">
+        <img src="assets/planos/planta_primera.jpg" alt="" />
+      </div> -->
+      
+    </div>
+
+    <!-- History of visited scenes. -->
+    <div style="display: none" id="history"></div>
+
+    <!-- Scripts Libraries -->
+    <script src="vendor/marzipano.js"></script>
+    <script src="vendor/bowser.min.js"></script>
+    <script src="vendor/screenfull.min.js"></script>
+    <!-- Scripts File -->
+    <script src="js/data.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/floor_up.js"></script>
+    <script src="js/floor_down.js"></script>
+  </body>
 </html>
