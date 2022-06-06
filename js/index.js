@@ -20,8 +20,6 @@
   const bowser = window.bowser;
   const screenfull = window.screenfull;
   const data = window.APP_DATA;
-  const floorDown = window.FLOOR_DOWN;
-  const floorUp = window.FLOOR_UP;
 
   // Grab elements from DOM.
   const panoElement = document.querySelector('#pano');
@@ -30,13 +28,9 @@
   const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
   const historyToggleElement = document.querySelector('#historyToggle');
   const historyElement = document.querySelector('#history');
-  const mapToggleElement = document.querySelector('#mapToggle');
-  // const mapElement = document.querySelector('');
 
   // Array of scenes history
   let scenesHistory = [];
-  // Array of map names scenes of floor down
-  let mapNameScenes = [];
 
   // Detect desktop or mobile mode.
   if (window.matchMedia) {

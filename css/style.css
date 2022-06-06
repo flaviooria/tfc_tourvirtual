@@ -269,31 +269,6 @@ body.fullscreen-enabled.mobile #autorotateToggle {
   position: absolute;
 }
 
-/* Icon Map */
-
-#mapToggle {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 40px;
-  padding: 5px;
-}
-
-#mapToggle .icon {
-  bottom: 100px;
-  left: 20px;
-  position: absolute;
-  cursor: pointer;
-}
-
-#mapToggle .icon-title {
-  bottom: 80px;
-  left: 25px;
-  position: absolute;
-}
-
 #sceneListToggle {
   position: absolute;
   top: 0;
