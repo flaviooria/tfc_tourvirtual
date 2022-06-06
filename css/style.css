@@ -233,11 +233,15 @@ body.fullscreen-enabled.mobile #autorotateToggle {
 
 #homeToggle .icon {
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 20px;
-  /* width: 30px;
-  height: 30px; */
   cursor: pointer;
+}
+
+#homeToggle .icon-title {
+  position: absolute;
+  bottom: 15px;
+  left: 25px;
 }
 
 /* Icon History */
@@ -253,10 +257,16 @@ body.fullscreen-enabled.mobile #autorotateToggle {
 }
 
 #historyToggle .icon {
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
   position: absolute;
   cursor: pointer;
+}
+
+#historyToggle .icon-title {
+  bottom: 15px;
+  right: 30px;
+  position: absolute;
 }
 
 #sceneListToggle {
