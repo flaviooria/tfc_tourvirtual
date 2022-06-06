@@ -31,7 +31,7 @@
   const historyToggleElement = document.querySelector('#historyToggle');
   const historyElement = document.querySelector('#history');
   const mapToggleElement = document.querySelector('#mapToggle');
-  // const mapElement = document.querySelector('');
+  const mapElement = document.querySelector('#contentMap');
 
   // Array of scenes history
   let scenesHistory = [];
