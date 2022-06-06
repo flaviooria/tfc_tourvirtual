@@ -1595,7 +1595,6 @@ var APP_DATA = {
       infoHotspots: [],
     },
     {
-      //todo aqui me he quedado!!!
       id: '35-pasillo_2_s-actos',
       name: 'Pasillo Salón Actos',
       levels: [
