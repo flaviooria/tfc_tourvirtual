@@ -509,16 +509,27 @@ body.fullscreen-enabled.mobile #autorotateToggle {
   opacity: 1;
 }
 
+@media screen and (min-width:768px) {
+  #contentMap {
+    width: 50% !important;
+    bottom: 200px;
+  }
+}
+
+@media screen and (min-width:900px) {
+  #contentMap {
+    width: 30% !important;
+  }
+}
+
 /* Content Map */
 #contentMap {
   display: grid;
-  grid-template-columns: 100px auto;
+  grid-template-columns: 50px auto;
   grid-template-rows: repeat(5,50px);
-  gap: 10px;
+  width: 90%;
   position: absolute;
-  width: 600px;
-  height: 500px;
-  top: 80px;
+  bottom: 150px;
   left: 20px;
   border-radius: 12px;
   overflow: hidden;
@@ -530,10 +541,8 @@ body.fullscreen-enabled.mobile #autorotateToggle {
 }
 
 .mapDown {
-  position: absolute;
   grid-column: 2 / -1;
-  width: 100%;
-  height: 100%;
+  grid-row: 1 / -1;
 }
 
 .mapDown img {

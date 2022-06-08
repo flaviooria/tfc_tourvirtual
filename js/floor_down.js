@@ -2,31 +2,31 @@ var FLOOR_DOWN = [
   {
     id: '0-entrada',
     name:'ENTRADA PRINCIPAL',
-    left : 80,
+    left : 75,
     bottom : 0
   },
   {
     id: '1-entrada_escaleras',
     name:'Acceso Instituto',
-    left : 80,
+    left : 75,
     bottom: 10
   },
   {
     id: '2-entrada_pabellon',
     name:'Pation Inferior',
-    left : 80,
+    left : 75,
     bottom: 18
   },
   {
     id: '3-escaleras_administracion',
     name:'Acceso Patio Superior',
-    left : 80,
+    left : 75,
     bottom: 70
   },
   {
     id: '4-pabellon',
     name:'Patio Superior',
-    left : 70,
+    left : 65,
     bottom: 70
   },
   {
@@ -39,36 +39,36 @@ var FLOOR_DOWN = [
     id: '6-direccion_administracion',
     name:'Administración',
     left : 72,
-    bottom: 45
+    bottom: 40
   },
   {
     id: '7-cafeteria',
     name:'Cafetería',
-    left : 55,
+    left : 50,
     bottom: 55
   },
   {
     id: '8-administracion',
     name:'administración',
     left : 80,
-    bottom: 45
+    bottom: 40
   },
   {
     id: '9-admin_escalera',
     name:'Acceso Daw Biblioteca',
-    left : 90,
+    left : 86,
     bottom: 40
   },
   {
     id: '24-pasillo_biblioteca',
     name:'Pasillo Biblioteca',
-    left : 91,
+    left : 84,
     bottom: 55
   },
   {
     id: '25-biblioteca',
     name:'Biblioteca',
-    left : 86,
+    left : 80,
     bottom: 60
   },
   {

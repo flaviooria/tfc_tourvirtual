@@ -35,8 +35,21 @@
 
   // Array of scenes history
   let scenesHistory = [];
-  // Array of map names scenes of floor down
-  let mapNameScenes = [];
+
+  mapToggleElement.addEventListener('click', () => {
+    // Array of map names scenes of floor down
+    let mapNameScenes = mapElement.querySelectorAll('.mapDown a');
+
+    mapNameScenes.forEach((element) => {
+      // Get id of element and get scene by id to switch scene
+      element.addEventListener('click', () => {
+        //Event to switch scene
+        const sceneId = element.getAttribute('id');
+        const scene = findSceneById(sceneId);
+        switchScene(scene);
+      });
+    });
+  });
 
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
