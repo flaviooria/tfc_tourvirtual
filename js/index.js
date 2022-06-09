@@ -27,6 +27,15 @@
   const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
   const historyToggleElement = document.querySelector('#historyToggle');
   const historyElement = document.querySelector('#history');
+  const mapToggleElement = document.querySelector('#mapToggle');
+  const mapElement = document.querySelector('#contentMap');
+  const closeToggleElement = document.querySelector('#closeToggle');
+  const arrowUpToggleElement = document.querySelector('.arrow_up');
+  const arrowDownToggleElement = document.querySelector('.arrow_down');
+  // Array of map names scenes of floor down
+  const anchorsForFloorDown = mapElement.querySelectorAll('.mapDown a');
+  // Array of map names scenes of floor up
+  const anchorsForFloorUp = mapElement.querySelectorAll('.mapUp a');
 
   // Array of scenes history
   let scenesHistory = [];
@@ -185,6 +194,71 @@
     }
   });
 
+  //Event to show and hide map scenes
+  mapToggleElement.addEventListener('click', () => {
+    let showIconMap = 'show-icon-map';
+    if (mapToggleElement.classList.contains(showIconMap)) {
+      mapElement.classList.add('show-content-map');
+      mapToggleElement.classList.remove(showIconMap);
+      closeToggleElement.classList.add(showIconMap);
+    }
+
+    anchorsForFloorDown.forEach((element) => {
+      // Get id of element and get scene by id to switch scene
+      element.addEventListener('click', () => {
+        //Event to switch scene
+        const sceneId = element.getAttribute('id');
+        const scene = findSceneById(sceneId);
+        switchScene(scene);
+        mapElement.classList.remove('show-content-map');
+        closeToggleElement.classList.remove(showIconMap);
+        mapToggleElement.classList.add(showIconMap);
+      });
+    });
+
+    anchorsForFloorUp.forEach((element) => {
+      // Get id of element and get scene by id to switch scene
+      element.addEventListener('click', () => {
+        //Event to switch scene
+        const sceneId = element.getAttribute('id');
+        const scene = findSceneById(sceneId);
+        switchScene(scene);
+        mapElement.classList.remove('show-content-map');
+        closeToggleElement.classList.remove(showIconMap);
+        mapToggleElement.classList.add(showIconMap);
+      });
+    });
+  });
+
+  closeToggleElement.addEventListener('click', () => {
+    let showIconMap = 'show-icon-map';
+    if (closeToggleElement.classList.contains(showIconMap)) {
+      mapElement.classList.remove('show-content-map');
+      closeToggleElement.classList.remove(showIconMap);
+      mapToggleElement.classList.add(showIconMap);
+    }
+  });
+
+  arrowDownToggleElement.addEventListener('click',() => {
+    let mapDown = mapElement.querySelector('.mapDown');
+    let mapUp = mapElement.querySelector('.mapUp');
+
+    if (mapDown.classList.contains('show-map')) {
+      mapDown.classList.remove('show-map');
+      mapUp.classList.add('show-map')
+    }
+  })
+
+  arrowUpToggleElement.addEventListener('click',() => {
+    let mapDown = mapElement.querySelector('.mapDown');
+    let mapUp = mapElement.querySelector('.mapUp');
+
+    if (mapUp.classList.contains('show-map')) {
+      mapUp.classList.remove('show-map');
+      mapDown.classList.add('show-map')
+    }
+  })
+
   // Set up autorotate, if enabled.
   const autorotate = Marzipano.autorotate({
     yawSpeed: 0.03,
@@ -225,6 +299,29 @@
     scene.scene.switchTo();
     startAutorotate();
     updateSceneName(scene);
+
+    // remove class point all elements
+    anchorsForFloorDown.forEach((element) => element.classList.remove('point'));
+
+    anchorsForFloorUp.forEach((element) => element.classList.remove('point'));
+
+    anchorsForFloorDown.forEach((element) => {
+      const sceneId = element.getAttribute('id');
+
+      if (sceneId === scene.data.id) {
+        // Add to animation pulse in element of scene current
+        element.classList.add('point');
+      }
+    });
+
+    anchorsForFloorUp.forEach((element) => {
+      const sceneId = element.getAttribute('id');
+
+      if (sceneId === scene.data.id) {
+        // Add to animation pulse in element of scene current
+        element.classList.add('point');
+      }
+    });
   }
 
   function updateSceneName(scene) {
