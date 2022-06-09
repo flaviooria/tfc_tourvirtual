@@ -410,7 +410,7 @@ var APP_DATA = {
     },
     {
       id: '9-admin_escalera',
-      name: 'Acceso Daw Biblioteca',
+      name: 'Acceso DAW Biblioteca',
       levels: [
         {
           tileSize: 256,
@@ -460,7 +460,7 @@ var APP_DATA = {
     },
     {
       id: '10-1_escalera_a_daw',
-      name: 'Escalera Daw',
+      name: 'Escalera DAW',
       levels: [
         {
           tileSize: 256,
@@ -504,7 +504,7 @@ var APP_DATA = {
     },
     {
       id: '11-2_pasillo_daw_plasticos',
-      name: 'Pasillo plasticos daw',
+      name: 'Pasillo plasticos DAW',
       levels: [
         {
           tileSize: 256,
@@ -560,7 +560,7 @@ var APP_DATA = {
     },
     {
       id: '12-3_aula_daw',
-      name: 'Aula Daw',
+      name: 'Aula DAW',
       levels: [
         {
           tileSize: 256,
@@ -1402,7 +1402,7 @@ var APP_DATA = {
     },
     {
       id: '31-pasillo_1_dam',
-      name: 'pasillo dam',
+      name: 'pasillo DAM',
       levels: [
         {
           tileSize: 256,
@@ -1446,7 +1446,7 @@ var APP_DATA = {
     },
     {
       id: '32-pasillo_2_dam',
-      name: 'pasillo dam',
+      name: 'pasillo DAM',
       levels: [
         {
           tileSize: 256,
@@ -1646,7 +1646,7 @@ var APP_DATA = {
     },
     {
       id: '36-aula_1dam',
-      name: 'Aula 1DAM',
+      name: 'Aula 1 DAM',
       levels: [
         {
           tileSize: 256,
@@ -1986,7 +1986,7 @@ var APP_DATA = {
     },
     {
       id: '44-pasillo_izquierdo_a_dam',
-      name: 'Pasillo a Dam',
+      name: 'Pasillo a DAM',
       levels: [
         {
           tileSize: 256,
@@ -2030,7 +2030,7 @@ var APP_DATA = {
     },
     {
       id: '45-pasillo_1_izquierdo_a_dam',
-      name: 'Pasillo a dam',
+      name: 'Pasillo a DAM',
       levels: [
         {
           tileSize: 256,
@@ -2074,7 +2074,7 @@ var APP_DATA = {
     },
     {
       id: '46-baos_dam',
-      name: 'baños dam',
+      name: 'baños DAM',
       levels: [
         {
           tileSize: 256,
@@ -2118,7 +2118,7 @@ var APP_DATA = {
     },
     {
       id: '47-escaleras_a_dam',
-      name: 'Escaleras a Dam',
+      name: 'Escaleras a DAM',
       levels: [
         {
           tileSize: 256,

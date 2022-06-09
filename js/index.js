@@ -36,6 +36,8 @@
   const anchorsForFloorDown = mapElement.querySelectorAll('.mapDown a');
   // Array of map names scenes of floor up
   const anchorsForFloorUp = mapElement.querySelectorAll('.mapUp a');
+  const mapDown = mapElement.querySelector('.mapDown');
+  const mapUp = mapElement.querySelector('.mapUp');
 
   // Array of scenes history
   let scenesHistory = [];
@@ -197,6 +199,7 @@
   //Event to show and hide map scenes
   mapToggleElement.addEventListener('click', () => {
     let showIconMap = 'show-icon-map';
+
     if (mapToggleElement.classList.contains(showIconMap)) {
       mapElement.classList.add('show-content-map');
       mapToggleElement.classList.remove(showIconMap);
@@ -205,33 +208,32 @@
 
     anchorsForFloorDown.forEach((element) => {
       // Get id of element and get scene by id to switch scene
-      element.addEventListener('click', () => {
-        //Event to switch scene
-        const sceneId = element.getAttribute('id');
-        const scene = findSceneById(sceneId);
-        switchScene(scene);
-        mapElement.classList.remove('show-content-map');
-        closeToggleElement.classList.remove(showIconMap);
-        mapToggleElement.classList.add(showIconMap);
-      });
+      generateEventToPointMap(element);
     });
 
     anchorsForFloorUp.forEach((element) => {
       // Get id of element and get scene by id to switch scene
-      element.addEventListener('click', () => {
-        //Event to switch scene
-        const sceneId = element.getAttribute('id');
-        const scene = findSceneById(sceneId);
-        switchScene(scene);
-        mapElement.classList.remove('show-content-map');
-        closeToggleElement.classList.remove(showIconMap);
-        mapToggleElement.classList.add(showIconMap);
-      });
+      generateEventToPointMap(element);
     });
   });
 
+  function generateEventToPointMap(element) {
+    let showIconMap = 'show-icon-map';
+
+    element.addEventListener('click', () => {
+      //Event to switch scene
+      const sceneId = element.getAttribute('id');
+      const scene = findSceneById(sceneId);
+      switchScene(scene);
+      mapElement.classList.remove('show-content-map');
+      closeToggleElement.classList.remove(showIconMap);
+      mapToggleElement.classList.add(showIconMap);
+    });
+  }
+
   closeToggleElement.addEventListener('click', () => {
     let showIconMap = 'show-icon-map';
+
     if (closeToggleElement.classList.contains(showIconMap)) {
       mapElement.classList.remove('show-content-map');
       closeToggleElement.classList.remove(showIconMap);
@@ -239,25 +241,23 @@
     }
   });
 
-  arrowDownToggleElement.addEventListener('click',() => {
-    let mapDown = mapElement.querySelector('.mapDown');
-    let mapUp = mapElement.querySelector('.mapUp');
+  arrowDownToggleElement.addEventListener('click', () => {
+    let showMap = 'show-map';
 
-    if (mapDown.classList.contains('show-map')) {
-      mapDown.classList.remove('show-map');
-      mapUp.classList.add('show-map')
+    if (mapDown.classList.contains(showMap)) {
+      mapDown.classList.remove(showMap);
+      mapUp.classList.add(showMap);
     }
-  })
+  });
 
-  arrowUpToggleElement.addEventListener('click',() => {
-    let mapDown = mapElement.querySelector('.mapDown');
-    let mapUp = mapElement.querySelector('.mapUp');
+  arrowUpToggleElement.addEventListener('click', () => {
+    let showMap = 'show-map';
 
-    if (mapUp.classList.contains('show-map')) {
-      mapUp.classList.remove('show-map');
-      mapDown.classList.add('show-map')
+    if (mapUp.classList.contains(showMap)) {
+      mapUp.classList.remove(showMap);
+      mapDown.classList.add(showMap);
     }
-  })
+  });
 
   // Set up autorotate, if enabled.
   const autorotate = Marzipano.autorotate({
@@ -335,8 +335,15 @@
     let stringAux = '';
     for (let i = 0; i < stringArray.length; i++) {
       if (stringArray[i] != '') {
-        stringAux +=
-          stringArray[i][0].toUpperCase() + stringArray[i].substring(1) + ' ';
+        if (
+          stringArray[i].toUpperCase() === 'DAM' ||
+          stringArray[i].toUpperCase() === 'DAW'
+        ) {
+          stringAux += stringArray[i].toUpperCase() + ' ';
+        } else {
+          stringAux +=
+            stringArray[i][0].toUpperCase() + stringArray[i].substring(1) + ' ';
+        }
       }
     }
     return stringAux;
