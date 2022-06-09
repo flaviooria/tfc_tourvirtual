@@ -225,8 +225,11 @@
       const sceneId = element.getAttribute('id');
       const scene = findSceneById(sceneId);
       switchScene(scene);
+      addSceneToHistoryIfNotExist(scene);
+      // Remove class that show map in the view
       mapElement.classList.remove('show-content-map');
       closeToggleElement.classList.remove(showIconMap);
+      // Show the icon map
       mapToggleElement.classList.add(showIconMap);
     });
   }
