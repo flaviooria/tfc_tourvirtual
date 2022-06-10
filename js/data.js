@@ -686,7 +686,7 @@ var APP_DATA = {
     },
     {
       id: '15-51_pasillo_2_eso',
-      name: 'Pasillo 2ESO',
+      name: 'Pasillo 2 ESO',
       levels: [
         {
           tileSize: 256,
@@ -730,7 +730,7 @@ var APP_DATA = {
     },
     {
       id: '16-52_pasillo_2_eso',
-      name: 'Pasillo 2ESO',
+      name: 'Pasillo 2 ESO',
       levels: [
         {
           tileSize: 256,
@@ -824,7 +824,7 @@ var APP_DATA = {
     },
     {
       id: '18-71_pasillo_3_eso',
-      name: 'Pasillo 3ESO',
+      name: 'Pasillo 3 ESO',
       levels: [
         {
           tileSize: 256,
@@ -868,7 +868,7 @@ var APP_DATA = {
     },
     {
       id: '19-72_pasillo_3_eso',
-      name: 'Pasillo 3ESO',
+      name: 'Pasillo 3 ESO',
       levels: [
         {
           tileSize: 256,
@@ -1766,7 +1766,7 @@ var APP_DATA = {
     },
     {
       id: '39-pasillo_1-eso',
-      name: 'Pasillo 1ESO',
+      name: 'Pasillo 1 ESO',
       levels: [
         {
           tileSize: 256,
@@ -1854,7 +1854,7 @@ var APP_DATA = {
     },
     {
       id: '41-pasillo_4_eso',
-      name: 'pasillo 4ESO',
+      name: 'pasillo 4 ESO',
       levels: [
         {
           tileSize: 256,
@@ -1898,7 +1898,7 @@ var APP_DATA = {
     },
     {
       id: '42-escalera-3eso-biblioteca',
-      name: 'Escalera 3ESO - Biblioteca',
+      name: 'Escalera 3 ESO - Biblioteca',
       levels: [
         {
           tileSize: 256,

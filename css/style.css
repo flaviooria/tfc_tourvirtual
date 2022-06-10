@@ -278,6 +278,10 @@ body.fullscreen-enabled.mobile #autorotateToggle {
 }
 
 .point {
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  background-color: red;
   animation-name: pulse;
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -596,6 +600,14 @@ body.fullscreen-enabled.mobile #autorotateToggle {
   grid-column: 2 / -1;
   grid-row: 1 / -1;
   transform: translateY(100%);
+}
+
+.map-title {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  font-weight: 800;
+  color: #000;
 }
 
 .mapDown img {
