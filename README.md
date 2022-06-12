@@ -14,7 +14,7 @@ En la página del tour virtual se encuentran unos iconos en los extremos de la p
 
 **Icono de play**
 
-![Imagen no disponible](Screenshots\iconoPlay.png "Icono de play")
+![Imagen no disponible](Screenshots/iconoPlay.png "Icono de play")
 
 Cuando se pulsa este icono, se rota la imagen virtual que está siendo renderizada.
 
@@ -22,7 +22,7 @@ Cuando se pulsa este icono, se rota la imagen virtual que está siendo renderiza
 
 **Icono de pantalla completa**
 
-![Imagen no disponible](Screenshots\iconoPantallaCompleta.png "Icono de pantalla completa")
+![Imagen no disponible](Screenshots/iconoPantallaCompleta.png "Icono de pantalla completa")
 
 Al hacer click en este icono, se amplía la pantalla a tamaño completo, y al volver a darle click, vuelve a su estado original.
 
@@ -30,7 +30,7 @@ Al hacer click en este icono, se amplía la pantalla a tamaño completo, y al vo
 
 **Icono de inicio**
 
-![Imagen no disponible](Screenshots\iconoInicio.PNG.png "Icono de inicio")
+![Imagen no disponible](Screenshots/iconoInicio.PNG.png "Icono de inicio")
 
 Servirá para redirigir a la página de inicio.
 
@@ -38,7 +38,7 @@ Servirá para redirigir a la página de inicio.
 
 **Icono de historial**
 
-![Imagen no disponible](Screenshots\iconoHistorial.png "Icono de historial")
+![Imagen no disponible](Screenshots/iconoHistorial.png "Icono de historial")
 
 Al pulsar sobre él, se abre un cuadro con las escenas que hayas visitado, para que puedas regresar a cualquiera de ellas cuando prefieras.
 
@@ -46,7 +46,7 @@ Al pulsar sobre él, se abre un cuadro con las escenas que hayas visitado, para 
 
 **Icono de mapa**
 
-![Imagen no disponible](Screenshots\iconoMapa.png "Icono de mapa")
+![Imagen no disponible](Screenshots/iconoMapa.png "Icono de mapa")
 
 Se te mostrará un plano con puntos distribuidos, que al ser pinchados te llevarán a la localización donde se ubique el punto.
 
@@ -54,17 +54,17 @@ Se te mostrará un plano con puntos distribuidos, que al ser pinchados te llevar
 ---
 
 
-![Imagen no disponible](Screenshots\Home.PNG "Home")
+![Imagen no disponible](Screenshots/Home.PNG "Home")
 
 ***
 
 ## *Tour*
 ---
 
-![Imagen no disponible](Screenshots\tour1.PNG "Tour desde escritorio")
+![Imagen no disponible](Screenshots/tour1.PNG "Tour desde escritorio")
 
 
-![Imagen no disponible](Screenshots\tour2.PNG "Tour desde móvil")
+![Imagen no disponible](Screenshots/tour2.PNG "Tour desde móvil")
 
 ***
 
@@ -72,4 +72,4 @@ Se te mostrará un plano con puntos distribuidos, que al ser pinchados te llevar
 ---
 
 
-![Imagen no disponible](Screenshots\puntosDestacados.PNG "Puntos destacados")
+![Imagen no disponible](Screenshots/puntosDestacados.PNG "Puntos destacados")
