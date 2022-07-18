@@ -558,6 +558,12 @@ body.fullscreen-enabled.mobile #autorotateToggle {
   opacity: 1;
 }
 
+@media screen and (max-width:900px) {
+  .card > .text {
+    opacity: 1;
+  }
+}
+
 @media screen and (min-width:768px) {
   #contentMap {
     width: 50% !important;
@@ -569,6 +575,35 @@ body.fullscreen-enabled.mobile #autorotateToggle {
   #contentMap {
     width: 30% !important;
   }
+}
+
+/* Tooltip Points*/
+div:hover .tooltip, div:hover .tooltip-css3 {
+	display: block;
+}
+
+.tooltip:before {
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid red;
+  bottom: -6px;
+  content: "";
+  height: 0;
+  left: 50%;
+  margin-left: -6px;
+  position: absolute;
+  width: 0;
+}
+
+.tooltip {
+  background-color: red;
+  border-radius: 8px;
+  color: #FFFFFF;
+  display: none;
+  left: 30%;
+  padding: 10px 20px;
+  position: absolute;
+  top: -50px;
 }
 
 /* Content Map */
@@ -583,7 +618,6 @@ body.fullscreen-enabled.mobile #autorotateToggle {
   border-radius: 12px;
   overflow: hidden;
   backdrop-filter: blur(10px);
-  /* border: 1px solid blue; */
   -webkit-box-shadow: -2px 2px 8px 0px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: -2px 2px 8px 0px rgba(0, 0, 0, 0.4);
   box-shadow: -2px 2px 8px 0px rgba(0, 0, 0, 0.4);

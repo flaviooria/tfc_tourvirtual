@@ -1641,6 +1641,50 @@ var APP_DATA = {
           rotation: 1.5707963267948966,
           target: '39-pasillo_1-eso',
         },
+        {
+          yaw: 1.020608371872779,
+          pitch: 0.14920095218731966,
+          rotation: 0,
+          target: '50-taller_plasticos',
+        },
+      ],
+      infoHotspots: [],
+    },
+    {
+      id: '50-taller_plasticos',
+      name: 'taller plasticos',
+      levels: [
+        {
+          tileSize: 256,
+          size: 256,
+          fallbackOnly: true,
+        },
+        {
+          tileSize: 512,
+          size: 512,
+        },
+        {
+          tileSize: 512,
+          size: 1024,
+        },
+        {
+          tileSize: 512,
+          size: 2048,
+        },
+      ],
+      faceSize: 1728,
+      initialViewParameters: {
+        pitch: 0,
+        yaw: 0,
+        fov: 1.5707963267948966,
+      },
+      linkHotspots: [
+        {
+          yaw: -3.0226502184569846,
+          pitch: 0.11253301092797052,
+          rotation: 0,
+          target: '35-pasillo_2_s-actos',
+        },
       ],
       infoHotspots: [],
     },
